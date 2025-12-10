@@ -1,0 +1,83 @@
+.body{
+    background-image: url("/public/To_Do_list.jpg");
+    background-size: cover;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 1rem;
+    margin-top: 12%;
+    overflow-y: scroll;
+}
+
+.box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 100x;
+    width: 320px;
+    height: 400px;
+    background-color: rgba(0, 0, 0, 0.2);
+    margin: 10% auto;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid black;
+    border-radius: 1rem;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+    color: white;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.input_box{
+    display: flex;
+    flex-direction: column;
+    width: 280px;
+    height: 150px;
+    justify-content: space-evenly;
+    margin-bottom: 25px;
+}
+
+.input_name,
+.input_password,
+.input_email{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.input_box input{
+    padding: 4px 12px;
+    border-radius: 0.5rem;    
+    border: 2px solid black;
+}
+
+.input_email input{
+    width: 100px;
+}
+
+.input_email button{
+    background-color: white;
+    border-radius: 0.5rem;
+    padding: 2px 6px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+
+.input_box label{
+    cursor: pointer;
+}
+
+.btn button{
+    padding: 8px 24px;
+    border: 1px solid black;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: 0.5s;
+}
+.btn button:hover,
+.input_email button:hover{
+    color: white;
+    background-color: blue;
+}
+
+
