@@ -49,12 +49,14 @@ function App() {
       const confirmCheck = window.confirm("일정을 완료하셨나요?"); 
       if(confirmCheck) {
           newCompleted = true;
+
           alert("수고하셨습니다 :)");
       } else {
           newCompleted = false;
           alert("체크를 취소합니다.");
       }
       const ymd = date.split('-');
+        console.log(newCompleted)
 
       
       // DB 업데이트

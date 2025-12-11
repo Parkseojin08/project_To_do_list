@@ -10,6 +10,7 @@
 
 //https://chuun92.tistory.com/56#google_vignette 암호
 process.env.TZ = 'UTC';
+require('dotenv').config();
 
 const express = require('express');
 const cors = require('cors');
@@ -627,14 +628,14 @@ app.put('/todos/:id', async (req,res) => {
             return;
         }
         const { id } = req.params;
-        const { title, description, date } = req.body;
+        const { title, description, date, completed } = req.body;
 
         const token = authHeader.split(' ')[1];
         const decoded = jwt.verify(token, 'jwt-secret-key');
         
         const response = await pool.query(
-            'update todolist.todos set title = $1, description = $2, date = $3 where todo_id = $5 and user_id = $6',
-            [title, description, date, id, decoded.user_id]
+            'update todolist.todos set title = $1, description = $2, date = $3, completed = $4 where todo_id = $5 and user_id = $6',
+            [title, description, date, completed, id, decoded.user_id]
         )
         res.status(200).json({
             success: true,
@@ -964,6 +965,6 @@ app.get('/todos/:title', async (req, res) => {
     }
 })
 
-app.listen(3001, () => {
-    console.log('Server running on http://localhost:3001');
+app.listen(process.env.ND_PORT, () => {
+    console.log('Server running');
 });
