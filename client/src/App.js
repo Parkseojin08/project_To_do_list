@@ -18,30 +18,33 @@ function App() {
 
   const [data, setData] = useState([]);
 
-  const getData = async () => {
-    try{
-        await axios.get("/todos",{
-            headers: {
-                Authorization: `Bearer ${localStorage.getItem("token")}`
-            }
-        })
-        .then(res => 
-            {
-                setData(Object.values(res.data.datas).map(item => ({
-                    ...item,
-                    date: item.date.split('T')[0]
-                }))
-                .sort((date1, date2) => {
-                    return new Date(date1.date) - new Date(date2.date);
-                }));
-            })
+    const getData = async (title, completed) => {
+        try {
+            const response = await axios.get("/todos", {
+                params: {
+                    title,
+                    completed
+                },
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem("token")}`
+                }
+            });
 
-        .catch(err => console.error(err.response))
+            setData(
+                Object.values(response.data.datas)
+                    .map(item => ({
+                        ...item,
+                        date: item.date.split('T')[0]
+                    }))
+                    .sort((date1, date2) => {
+                        return new Date(date1.date) - new Date(date2.date);
+                    })
+            );
 
-    }catch(err){
-        console.error(err);
-    }
-}
+        } catch (err) {
+            console.error(err.response || err);
+        }
+    };  
 
   const check = async (todoId, Completed, title, description, date) => {
       let newCompleted = Completed;
@@ -56,8 +59,6 @@ function App() {
           alert("체크를 취소합니다.");
       }
       const ymd = date.split('-');
-        console.log(newCompleted)
-
       
       // DB 업데이트
       await axios.put(`/todos/${todoId}`, 
@@ -105,7 +106,7 @@ function App() {
         <Header user={user} login={login} setUser={setUser} setLogin={setLogin} data={data} check={check}/>
         <div className={Style.body}>
           <Routes>
-            <Route index element={<Main user = { login } data={data} getData={getData} setData={setData} check={check}/>}/>
+            <Route index element={<Main user = { login } data={data} getData={getData} check={check}/>}/>
             <Route path="/signin" element={<Signin setUser = {setUser} setLogin = {setLogin}/>}/>
             <Route path="/signup" element={<Signup/>}/>
             <Route path="/profile" element={<Profile />}/>

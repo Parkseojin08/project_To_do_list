@@ -4,111 +4,13 @@ import EditModal from "../../../component/EditModal/EditModal";
 import MainContentS from './MainContent.module.css';
 
 
-export default function MainContent({ user, data, setData, check }){
+export default function MainContent({ user, data, getData, check }){
 
     
     const [modalOpen,setModalOpen] = useState(false);
     const [modalData, setModalData] = useState({});
 
     const [searchTitle, setSearchTitle] = useState('');
-
-    const getData = async () => {
-        try{
-            await axios.get("/todos",{
-                headers: {
-                    Authorization: `Bearer ${localStorage.getItem("token")}`
-                }
-            })
-            .then(res =>  // ok
-                {
-                    setData(Object.values(res.data.datas).map(info => ({
-                        ...info,
-                        date: info.date.split('T')[0]
-                    }))
-                    .sort((date1, date2) => {
-                        return new Date(date1.date) - new Date(date2.date); // Date로 전환 -
-                    }))
-                })
-            .catch(err => console.error(err.response))
-
-        }catch(err){
-            console.error(err);
-        }
-    }
-
-    // 체크 된것만
-    const getDataCheckOk = async () => {
-        try{
-            await axios.get("/todos/checkOk",{
-                headers: {
-                    Authorization: `Bearer ${localStorage.getItem("token")}`
-                }
-            })
-            .then(res => 
-                {
-                    setData(Object.values(res.data.datas).map(info => ({
-                        ...info,
-                        date: info.date.split('T')[0]
-                    }))
-                    .sort((date1, date2) => {
-                        return new Date(date1.date) - new Date(date2.date); // Date로 전환 -
-                    }))
-                })
-            .catch(err => console.error(err.response))
-
-        }catch(err){
-            console.error(err);
-        }
-    }
-    
-    // 체크 안된건만
-    const getDataCheckNo = async () => {
-        try{
-            await axios.get("/todos/checkNo",{
-                headers: {
-                    Authorization: `Bearer ${localStorage.getItem("token")}`
-                }
-            })
-            .then(res => 
-                {
-                    setData(Object.values(res.data.datas).map(info => ({
-                        ...info,
-                        date: info.date.split('T')[0]
-                    }))
-                    .sort((date1, date2) => {
-                        return new Date(date1.date) - new Date(date2.date); // Date로 전환 -
-                    }))
-                })
-            .catch(err => console.error(err.response))
-
-        }catch(err){
-            console.error(err);
-        }
-    }
-
-    const getDataTitle = async () => {
-        try{
-            await axios.get(`/todos/${searchTitle}`,{
-                headers: {
-                    Authorization: `Bearer ${localStorage.getItem("token")}`
-                }
-            })
-            .then(res => 
-                {
-                    setData(Object.values(res.data.datas).map(info => ({
-                        ...info,
-                        date: info.date.split('T')[0]
-                    }))
-                    .sort((date1, date2) => {
-                        return new Date(date1.date) - new Date(date2.date); // Date로 전환 -
-                    }))
-                })
-            .catch(err => console.error(err.response))
-
-        }catch(err){
-            console.error(err);
-        }
-    }
 
     useEffect(() => {
         getData()
@@ -145,13 +47,13 @@ export default function MainContent({ user, data, setData, check }){
                     <div className={MainContentS.search_title_box}>
                         <label htmlFor="search" style={{cursor: "pointer"}}>검색: </label>
                         <input type="text" id="search" onChange={(e) => setSearchTitle(e.target.value)} value={searchTitle} placeholder="제목을 검색해 보세요!"/>
-                        <button onClick={getDataTitle}>추출</button>
+                        <button onClick={() => getData(searchTitle,undefined)}>추출</button>
                     </div>
                 </div>
                 <div className={MainContentS.search_btn}>
-                    <button type="button" onClick={getData}>전체 확인</button>
-                    <button type="button" onClick={getDataCheckOk}>체크 O 확인</button>
-                    <button type="button" onClick={getDataCheckNo}>체크 X 확인</button>
+                    <button type="button" onClick={() => getData(searchTitle)}>전체 확인</button>
+                    <button type="button" onClick={() => getData(searchTitle,true)}>체크 O 확인</button>
+                    <button type="button" onClick={() => getData(searchTitle,false)}>체크 X 확인</button>
                 </div>
             </div>
             {data.map((data, index) => {
