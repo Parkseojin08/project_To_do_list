@@ -30,10 +30,10 @@ https://petstore.swagger.io/?url=https://raw.githubusercontent.com/Parkseojin08/
 <img width="1917" height="910" alt="Image" src="https://github.com/user-attachments/assets/a56e1482-181f-4121-b8be-65001497bf9e" />
 
 ### SUB LIST
-small list open menu
+#### small list open menu
 
 <img width="37" height="33" alt="Image" src="https://github.com/user-attachments/assets/481a2773-3ab7-4b25-81bf-d8a6c3e49b44" />
 
-smail list
+#### smail list
 
 <img width="265" height="829" alt="Image" src="https://github.com/user-attachments/assets/a72f687d-fe1a-4066-b4e1-82bf63d3e256" />
