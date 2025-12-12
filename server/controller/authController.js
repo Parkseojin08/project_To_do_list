@@ -53,6 +53,15 @@ exports.login =  async (req, res) => {
 exports.register = async (req, res) => {
     try {
         const { username, password, email } = req.body;
+        
+        const regexEmail = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/.test(email);
+        if(!regexEmail){
+            response.status(400).json({
+                success: false
+            })
+            return;
+        }
+
         const encryption = 10;
         const hash = await bcrypt.hash(password, encryption);
         const request = await pool.query(

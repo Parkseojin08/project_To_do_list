@@ -58,13 +58,12 @@
 // 이메일 중복 검사
 /**
  * @swagger
- * /auth/emailcheck:
+ * /auth/emailCheck.js:
  *   get:
  *     summary: 이메일 중복 검사
  *     parameters:
  *       - in: query
  *         name: email
- *         required: true
  *         description: 이메일 검사
  *         schema:
  *           type: string
