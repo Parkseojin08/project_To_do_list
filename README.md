@@ -40,12 +40,16 @@ https://petstore.swagger.io/?url=https://raw.githubusercontent.com/Parkseojin08/
 
 ### Profile
 #### 프로필 열기 버튼
+임의의 'test' 자기이름을 클릭하면 user의 profile로 이동된다.
+<img width="190" height="59" alt="Image" src="https://github.com/user-attachments/assets/8a6aa957-91e5-42aa-8fb4-0bb820429cc7" />
 
 #### 프로필 화면
-
+<img width="1903" height="908" alt="Image" src="https://github.com/user-attachments/assets/c89e02a3-4878-438f-bd60-5afd0a7252e5" />
 
 ### LOGIN
 #### 로그인 화면
+<img width="1152" height="763" alt="Image" src="https://github.com/user-attachments/assets/7eb52ca5-aeaa-4c7e-ab7f-0cb53ec3d49e" />
 
 ### JOIN
 #### 회원가입 화면
+<img width="1164" height="770" alt="Image" src="https://github.com/user-attachments/assets/33e68134-118b-4472-acb2-188e704f7acd" />
