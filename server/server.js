@@ -16,7 +16,7 @@ const express = require('express');
 const cors = require('cors');
 const pool = require('./db/db.js');
 const jwt = require('jsonwebtoken')
-const { swaggerUi, specs } = require('./swagger/swagger.js');
+const { swaggerUi, specs } = require('./swagger/generateYaml.js');
 const app = express();
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs,{
