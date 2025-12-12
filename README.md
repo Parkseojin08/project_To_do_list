@@ -28,6 +28,7 @@ https://petstore.swagger.io/?url=https://raw.githubusercontent.com/Parkseojin08/
 ## UI
 ### 메인 화면
 <img width="1917" height="910" alt="Image" src="https://github.com/user-attachments/assets/a56e1482-181f-4121-b8be-65001497bf9e" />
+
 ### SUB LIST
 To Do List 작은 창 열기
-
+<img width="265" height="829" alt="Image" src="https://github.com/user-attachments/assets/a72f687d-fe1a-4066-b4e1-82bf63d3e256" />
