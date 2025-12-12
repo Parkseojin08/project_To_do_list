@@ -6,6 +6,8 @@
  * /auth/register:
  *   post:
  *     summary: 회원가입
+ *     tags:
+ *       - Auth
  *     requestBody:
  *       content:
  *         application/json:
@@ -133,6 +135,8 @@
  * /auth/login:
  *   post:
  *     summary: 로그인
+ *     tags:
+ *       - Auth
  *     requestBody:
  *       content:
  *         application/json:
@@ -198,6 +202,8 @@
  *   get:
  *     summary: 사용자의 프로필을 조회
  *     description: JWT 토큰을 통해 로그인한 사용자의 프로필 정보를 반환합니다.
+ *     tags:
+ *       - user
  *     responses:
  *       200:
  *         description: 성공적으로 프로필 정보를 반환
@@ -243,6 +249,8 @@
  *   post:
  *     summary: "TO DO 생성"
  *     description: "토큰과 user의 고유 id가 필요합니다."
+ *     tags:
+ *       - todos
  *     requestBody:
  *       content:
  *         application/json:
@@ -311,6 +319,8 @@
  *   delete:
  *     summary: "TO DO 삭제"
  *     description: "토큰의 유저 고유 id와 To Do 에 저장된 유저 고유 ID가 같으면 삭제"
+  *    tags:
+ *       - todos
  *     parameters:
  *       - in: path
  *         name: id
@@ -356,6 +366,8 @@
  *   put:
  *     summary: "To Do 수정"
  *     description: "토큰의 userid와 todo_id가 맞는지 확인 후 정보 수정"
+ *     tags:
+ *     - todos
  *     parameters:
  *       - in: path
  *         name: id
@@ -417,6 +429,8 @@
  *   get:
  *     summary: "TO DO List 조회"
  *     description: "토큰의 user id를 받아 TO DO 스키마에 저장된 user id에 관한 모든 데이터를 불러옴"
+ *     tags:
+ *     - todos
  *     responses:
  *       200:
  *         description: "성공 시"
@@ -465,10 +479,12 @@
 // 체크 완료만
 /**
  * @swagger
- * /todos/checkOk:
+ * /todos?completed = true:
  *   get:
  *     summary: "TO DO List completed 조회"
  *     description: "토큰의 user id를 받아 TO DO 스키마에 저장된 user id에 관한 모든 데이터를 불러옴 단. completed 항목이 true일 겅우만"
+ *     tags:
+ *     - todos
  *     responses:
  *       200:
  *         description: "성공 시"
@@ -517,10 +533,12 @@
 // 체크 안된것만
 /**
  * @swagger
- * /todos/checkNo:
+ * /todos?completed = false:
  *   get:
  *     summary: "TO DO List Not completed 조회"
  *     description: "토큰의 user id를 받아 TO DO 스키마에 저장된 user id에 관한 모든 데이터를 불러옴, 단 completed가 false인 것만"
+ *     tags:
+ *       - todos
  *     responses:
  *       200:
  *         description: "성공 시"
@@ -569,10 +587,12 @@
 // 타이틀로 받기
 /**
  * @swagger
- * /todos/{title}:
+ * /todos?title='value':
  *   get:
  *     summary: "TO DO List title 조회"
  *     description: "토큰의 user id를 받아 TO DO 스키마에 저장된 user id에 관한 모든 데이터를 불러옴, 단 title과 비슷한 으름의 데이터만"
+ *     tags:
+ *       - todos
  *     parameters:
  *       - in: path
  *         name: title

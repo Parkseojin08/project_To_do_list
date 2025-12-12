@@ -11,19 +11,32 @@ exports.getTodos = async (req, res) => {
         if (!authHeader) {
             res.status(401).json({success: false, })
             return;
-        }
+        }        
+        
+        const { completed, title } = req.query;
         
         const token = authHeader.split(' ')[1];
         const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);
+        
+        let query = 'SELECT todo_id, title, description, date, completed FROM todolist.todos where user_id = $1';
+        let params = [decoded.user_id];
+        let queryCount = 1;
+        if(completed !== undefined){
+            queryCount++
+            query += ` and completed = $${queryCount}`;            
+            params.push(completed === 'true')
+        }
+        if(title){
+            queryCount++;
+            query += ` and title like $${queryCount}`;
+            params.push(`%${title}%`)
+        }
 
-        const response = await pool.query(
-            'select todo_id, title, description, date, completed from todolist.todos where  user_id = $1',
-            [decoded.user_id]
-        )
+        const response = await pool.query(query, params);
 
         res.status(200).json({
             success: true,
-            datas: {...response.rows}
+            datas: response.rows
         });
 
     }catch(err){

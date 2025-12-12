@@ -9,6 +9,8 @@ paths:
   /auth/register:
     post:
       summary: 회원가입
+      tags:
+        - Auth
       requestBody:
         content:
           application/json:
@@ -56,15 +58,20 @@ paths:
                       created_at:
                         type: string
                         example: '2025-12-09 10:18:00.300'
-  /auth/emailCheck.js:
+  /auth/emailcheck:
     get:
       summary: 이메일 중복 검사
+      tags:
+        - Auth
       parameters:
         - in: query
           name: email
-          description: 이메일 검사
+          required: true
+          description: 중복 검사할 이메일 주소
           schema:
             type: string
+            format: email
+            pattern: ^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$
             example: test@test.test
       responses:
         '200':
@@ -81,7 +88,7 @@ paths:
                     type: string
                     example: 사용 가능한 이메일입니다.
         '400':
-          description: 이메일을 입력하지 않음
+          description: 이메일을 입력하지 않음 또는 형식 오류
           content:
             application/json:
               schema:
@@ -122,6 +129,8 @@ paths:
   /auth/login:
     post:
       summary: 로그인
+      tags:
+        - Auth
       requestBody:
         content:
           application/json:
@@ -182,6 +191,8 @@ paths:
     get:
       summary: 사용자의 프로필을 조회
       description: JWT 토큰을 통해 로그인한 사용자의 프로필 정보를 반환합니다.
+      tags:
+        - user
       responses:
         '200':
           description: 성공적으로 프로필 정보를 반환
@@ -222,6 +233,8 @@ paths:
     post:
       summary: TO DO 생성
       description: 토큰과 user의 고유 id가 필요합니다.
+      tags:
+        - todos
       requestBody:
         content:
           application/json:
@@ -282,6 +295,8 @@ paths:
     get:
       summary: TO DO List 조회
       description: 토큰의 user id를 받아 TO DO 스키마에 저장된 user id에 관한 모든 데이터를 불러옴
+      tags:
+        - todos
       responses:
         '200':
           description: 성공 시
@@ -325,47 +340,11 @@ paths:
                     type: string
                     message: 토큰 없음
   /todos/{id}:
-    delete:
-      summary: TO DO 삭제
-      description: 토큰의 유저 고유 id와 To Do 에 저장된 유저 고유 ID가 같으면 삭제
-      parameters:
-        - in: path
-          name: id
-          required: true
-          description: 삭제할 TO DO의 ID
-          schema:
-            type: int
-            example: 1
-      responses:
-        '200':
-          description: 삭제성공 시
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  successs:
-                    type: boolean
-                    example: true
-                  message:
-                    type: string
-                    example: 삭제성공!
-        '401':
-          desription: 삭제실패 시
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  success:
-                    type: boolean
-                    example: false
-                  message:
-                    type: string
-                    example: 삭제 실패!
     put:
       summary: To Do 수정
       description: 토큰의 userid와 todo_id가 맞는지 확인 후 정보 수정
+      tags:
+        - todos
       parameters:
         - in: path
           name: id
@@ -417,12 +396,14 @@ paths:
                   message:
                     type: string
                     example: 수정 실패
-  /todos/checkOk:
+  /todos?completed = true:
     get:
       summary: TO DO List completed 조회
       description: >-
         토큰의 user id를 받아 TO DO 스키마에 저장된 user id에 관한 모든 데이터를 불러옴 단. completed 항목이
         true일 겅우만
+      tags:
+        - todos
       responses:
         '200':
           description: 성공 시
@@ -465,12 +446,14 @@ paths:
                   message:
                     type: string
                     message: 토큰 없음
-  /todos/checkNo:
+  /todos?completed = false:
     get:
       summary: TO DO List Not completed 조회
       description: >-
         토큰의 user id를 받아 TO DO 스키마에 저장된 user id에 관한 모든 데이터를 불러옴, 단 completed가
         false인 것만
+      tags:
+        - todos
       responses:
         '200':
           description: 성공 시
@@ -513,12 +496,14 @@ paths:
                   message:
                     type: string
                     message: 토큰 없음
-  /todos/{title}:
+  /todos?title='value':
     get:
       summary: TO DO List title 조회
       description: >-
         토큰의 user id를 받아 TO DO 스키마에 저장된 user id에 관한 모든 데이터를 불러옴, 단 title과 비슷한 으름의
         데이터만
+      tags:
+        - todos
       parameters:
         - in: path
           name: title

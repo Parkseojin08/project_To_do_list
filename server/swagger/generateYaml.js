@@ -2,6 +2,7 @@ const swaggerJsdoc = require('swagger-jsdoc');
 const yaml = require('js-yaml');
 const fs = require('fs');
 const path = require('path');
+const swaggerUi = require('swagger-ui-express');
 
 const swaggerPath = path.join(__dirname, './visualization/swagger.js');
 
@@ -30,3 +31,5 @@ fs.writeFileSync(
   yamlString,
   'utf8'
 );
+
+module.exports = { swaggerUi, specs };
