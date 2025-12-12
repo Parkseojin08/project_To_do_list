@@ -1,5 +1,6 @@
-const swaggerUi = require('swagger-ui-express');
 const swaggerJsdoc = require('swagger-jsdoc');
+const yaml = require('js-yaml');
+const fs = require('fs');
 const path = require('path');
 
 const swaggerPath = path.join(__dirname, './visualization/swagger.js');
@@ -10,7 +11,7 @@ const options = {
     info: {
       title: 'Todo API',
       version: '1.0.0',
-      description: 'Todo API with express \n 임의 token:',
+      description: 'Todo API with express',
     },
     servers: [
       {
@@ -22,6 +23,10 @@ const options = {
 };
 
 const specs = swaggerJsdoc(options);
+const yamlString = yaml.dump(specs);
 
-
-module.exports = { swaggerUi, specs };
+fs.writeFileSync(
+  path.join(__dirname, './swagger.yaml'),
+  yamlString,
+  'utf8'
+);
