@@ -14,8 +14,7 @@ require('dotenv').config();
 
 const express = require('express');
 const cors = require('cors');
-const pool = require('./db/db.js');
-const jwt = require('jsonwebtoken')
+
 const { swaggerUi, specs } = require('./swagger/generateYaml.js');
 const app = express();
 
@@ -32,7 +31,6 @@ const loginRouter = require('./routes/auth/login.js');
 const registerRouter = require('./routes/auth/register.js');
 const emailCheckRouter = require('./routes/auth/emailCheck.js');
 const profileRouter = require('./routes/users/users.js')
-
 const allTodos = require('./routes/todos/allTodos.js')
 
 // 회원 관련
