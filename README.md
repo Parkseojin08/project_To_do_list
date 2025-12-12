@@ -1,8 +1,11 @@
 # MINI_PROJECT_TO_DO_LIST
 ## 프로젝트 도구 및 기술 스택
 -Tool: vscode, DBeaver
+
 -SQL: postgreSQL
+
 -라이브러리: React
+
 -서버: node.js
 
 ## API
@@ -41,6 +44,7 @@ https://petstore.swagger.io/?url=https://raw.githubusercontent.com/Parkseojin08/
 ### Profile
 #### 프로필 열기 버튼
 임의의 'test' 자기이름을 클릭하면 user의 profile로 이동된다.
+
 <img width="190" height="59" alt="Image" src="https://github.com/user-attachments/assets/8a6aa957-91e5-42aa-8fb4-0bb820429cc7" />
 
 #### 프로필 화면
