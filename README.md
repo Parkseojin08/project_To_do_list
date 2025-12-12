@@ -37,3 +37,15 @@ https://petstore.swagger.io/?url=https://raw.githubusercontent.com/Parkseojin08/
 #### smail list
 
 <img width="265" height="829" alt="Image" src="https://github.com/user-attachments/assets/a72f687d-fe1a-4066-b4e1-82bf63d3e256" />
+
+### Profile
+#### 프로필 열기 버튼
+
+#### 프로필 화면
+
+
+### LOGIN
+#### 로그인 화면
+
+### JOIN
+#### 회원가입 화면
