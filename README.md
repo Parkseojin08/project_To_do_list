@@ -1,9 +1,9 @@
 # MINI_PROJECT_TO_DO_LIST
 ## 프로젝트 도구 및 기술 스택
-Tool: vscode, DBeaver
-SQL: postgreSQL
-라이브러리: React
-서버: node.js
+-Tool: vscode, DBeaver
+-SQL: postgreSQL
+-라이브러리: React
+-서버: node.js
 
 ## API
 Swagger API 문서:
