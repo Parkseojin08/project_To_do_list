@@ -5,8 +5,9 @@ SQL: postgreSQL
 라이브러리: React
 서버: node.js
 
-## API:
-Swagger API 문서
+## API
+Swagger API 문서:
+
 https://petstore.swagger.io/?url=https://raw.githubusercontent.com/Parkseojin08/project_To_do_list/main/server/swagger/swagger.yaml#/
 
 ## 사용법
@@ -25,4 +26,4 @@ https://petstore.swagger.io/?url=https://raw.githubusercontent.com/Parkseojin08/
    - 체크 X 확인 버튼: 완료하지 않은 버튼만 호출
     
 # UI
-
+<img width="1917" height="910" alt="Image" src="https://github.com/user-attachments/assets/a56e1482-181f-4121-b8be-65001497bf9e" />
