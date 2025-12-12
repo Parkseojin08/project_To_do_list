@@ -1,5 +1,12 @@
 # MINI_PROJECT_TO_DO_LIST
-## 프로젝트 도구 및 기술 스택
+
+## 목록
+- [프로젝트 도구 및 기술 스택](#stack)
+- [API](#api)
+- [사용법](#사용법)
+- [UI](#ui)
+
+## 프로젝트 도구 및 기술 스택(#stack)
 -Tool: vscode, DBeaver
 
 -SQL: postgreSQL
