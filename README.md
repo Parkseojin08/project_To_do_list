@@ -25,5 +25,9 @@ https://petstore.swagger.io/?url=https://raw.githubusercontent.com/Parkseojin08/
    - 체크 O 확인 버튼: 완료한 To Do List만 출
    - 체크 X 확인 버튼: 완료하지 않은 버튼만 호출
     
-# UI
+## UI
+### 메인 화면
 <img width="1917" height="910" alt="Image" src="https://github.com/user-attachments/assets/a56e1482-181f-4121-b8be-65001497bf9e" />
+### SUB LIST
+To Do List 작은 창 열기
+
