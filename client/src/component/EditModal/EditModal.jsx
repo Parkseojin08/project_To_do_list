@@ -19,7 +19,8 @@ export default function EditModal({ modalData ,onClose, getData }) {
                         {
                             title: Etitle,
                             description: Edescription,
-                            date: Edate
+                            date: Edate,
+                            completed
                         }
                         ,{
                             headers: {

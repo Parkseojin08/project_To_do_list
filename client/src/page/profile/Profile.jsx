@@ -11,7 +11,7 @@ export default function Profile(){
     const move = useNavigate()
     const check = async () => {
         try{
-            const response = await axios.get('/users/me',{
+            const response = await axios.get('/users/profile',{
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem("token")}`
                 }

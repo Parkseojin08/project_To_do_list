@@ -65,7 +65,7 @@ export default function Signup(){
         }
         
         try {
-            const response = await axios.get("/login/emailcheck", {
+            const response = await axios.get("/auth/emailcheck", {
                 params: { email }
             });
             
