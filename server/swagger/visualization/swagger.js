@@ -55,18 +55,22 @@
  */
 
  
-// 이메일 중복 검사
 /**
  * @swagger
- * /auth/emailCheck.js:
+ * /auth/emailcheck:
  *   get:
  *     summary: 이메일 중복 검사
+ *     tags:
+ *       - Auth
  *     parameters:
  *       - in: query
  *         name: email
- *         description: 이메일 검사
+ *         required: true
+ *         description: 중복 검사할 이메일 주소
  *         schema:
  *           type: string
+ *           format: email
+ *           pattern: '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
  *           example: "test@test.test"
  *     responses:
  *       200:
@@ -83,7 +87,7 @@
  *                   type: string
  *                   example: "사용 가능한 이메일입니다." 
  *       400:
- *         description: "이메일을 입력하지 않음"
+ *         description: "이메일을 입력하지 않음 또는 형식 오류"
  *         content: 
  *           application/json:
  *             schema:
