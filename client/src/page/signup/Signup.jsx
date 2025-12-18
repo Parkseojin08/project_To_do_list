@@ -31,7 +31,7 @@ export default function Signup(){
             alert("패스워드의 조건을 충족하지 못하였습니다.");
             return;
         }
-        const regexEmail = /^[A-Za-z.]+@[A-Za-z.]{2,}\.[A-Za-z]{2,}$/.test(email)
+        const regexEmail = /^[A-Za-z.]{2,36}@[A-Za-z.]{2,20}\.[A-Za-z]{2,10}$/.test(email)
         if(!regexEmail){
             alert("이메일 형식을 맞춰주세요.")
             return;
