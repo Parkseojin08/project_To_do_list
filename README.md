@@ -2,7 +2,6 @@
 
 download: [project_To_do_list-main.zip](https://github.com/user-attachments/files/24225189/project_To_do_list-main.zip)
 
-![Image](https://github.com/user-attachments/assets/e4f51a1e-11da-4da1-a323-144ae799aada)
 ## 목록
 - [프로젝트 도구 및 기술 스택](#stack)
 - [API](#api)
